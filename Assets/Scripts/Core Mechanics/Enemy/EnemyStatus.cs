@@ -24,7 +24,7 @@ public class EnemyStatus : MonoBehaviour
         {
             playerProjectile = collision.GetComponent<PlayerProjectile>();
             TakeDamage(playerProjectile.damage);
-            Destroy(collision.gameObject);
+            
             Debug.Log("Enemy Health: ");
         }
     }

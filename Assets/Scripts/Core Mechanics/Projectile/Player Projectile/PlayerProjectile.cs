@@ -9,7 +9,7 @@ public class PlayerProjectile : MonoBehaviour
     public float damage; // Damage yang diberikan projectile
 
     private Vector3 direction;
-
+    public Animator anim;
     public void SetDirection(Vector3 dir)
     {
         direction = dir;
@@ -31,13 +31,25 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collision.CompareTag("EnemyProjectile"))
         {
-            Destroy(gameObject);
+            anim.SetTrigger("hit");
+            
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            
+            anim.SetTrigger("hit");
         }
     }
 
     private IEnumerator Destroy()
     {
         yield return new WaitForSeconds(timeToDestroy);
+        Destroy(gameObject);
+    }
+    
+    public void SelfDestruct()
+    {
         Destroy(gameObject);
     }
 }
