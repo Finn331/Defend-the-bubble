@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: adee3ed93808aaf41866f415a145917a
+guid: 13c8105c88c912c418ec5c5c9bcbf668
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,7 +121,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Skills_0
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 420
+        width: 439
+        height: 402
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f86084cd0d768a747be67d58deef4b89
+      internalID: -1374705107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skills_1
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 264
+        width: 200
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c10308a66b27348bd24c987149796f
+      internalID: 807915692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +174,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Skills_0: -1374705107
+      Skills_1: 807915692
+      Skills_10: 1430728017
+      Skills_2: -1739696480
+      Skills_3: -437509287
+      Skills_4: -147315615
+      Skills_5: -1819337326
+      Skills_6: -815418116
+      Skills_7: 256359352
+      Skills_8: -261602851
+      Skills_9: 600138731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
