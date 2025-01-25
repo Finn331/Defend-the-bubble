@@ -19,6 +19,9 @@ public class Attack : MonoBehaviour
     private float autoEffectiveDelay; // Delay antara tembakan otomatis
     private float lastAutoSpawnTime; // Waktu terakhir auto shoot
 
+    [Header("Script References")]
+    [SerializeField] UpgradeSystem upgradeSystem;
+
     private void Awake()
     {
         UpgradeableCheck();
@@ -44,16 +47,23 @@ public class Attack : MonoBehaviour
         }
 
         // Toggle auto shoot menggunakan tombol "T" (contoh toggle)
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            isAutoShootEnabled = !isAutoShootEnabled;
-            Debug.Log($"Auto Shoot Toggled: {isAutoShootEnabled}");
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    isAutoShootEnabled = !isAutoShootEnabled;
+        //    Debug.Log($"Auto Shoot Toggled: {isAutoShootEnabled}");
+        //}
     }
 
     void UpgradeableCheck()
     {
+        // Boolean Checking from UpgradeSystem Scripts
+        if (upgradeSystem.unlockedAutomaticShoot == true)
+        {
+            isAutoShootEnabled = true;
+        }
+
         manualSpawnDelay = SaveManager.instance.attackSpeedClick;
+
         // Auto fire rate bisa di-upgrade jika Anda ingin menambahkannya ke sistem upgrade
         autoFireRate = SaveManager.instance.autoFireRate; // Ambil nilai fire rate auto dari SaveManager
     }

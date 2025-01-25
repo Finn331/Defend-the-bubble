@@ -32,7 +32,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void Update()
     {
-        /*health = SaveManager.instance.health;*/ // Ambil nilai health dari SaveManager
+        health = SaveManager.instance.health; // Ambil nilai health dari SaveManager
 
 
         // Mengecek apakah regenerasi health dapat dimulai

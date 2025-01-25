@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
         {
             // Start level 1
             SaveManager.instance.attackSpeedClick = 3f;
+            SaveManager.instance.health = 100f;
+            SaveManager.instance.attackDamage = 10f;
+            SaveManager.instance.regenRate = 0.1f;
+            SaveManager.instance.Save();
         }
     }
 
