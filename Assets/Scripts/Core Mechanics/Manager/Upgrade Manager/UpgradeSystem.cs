@@ -32,8 +32,7 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI automaticAttackUpgradeText;
     [SerializeField] TextMeshProUGUI regenRateUpgradeText;
     [SerializeField] TextMeshProUGUI automaticAttackUnlockText;
-
-
+    
 
     void Start()
     {
@@ -51,11 +50,11 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (unlockedAutomaticShoot == true)
         {
-            automaticAttackButton.interactable = true;
+            automaticAttackButton.interactable = false;
         }
         else
         {
-            automaticAttackButton.interactable = false;
+            automaticAttackButton.interactable = true;
         }
     }
 
