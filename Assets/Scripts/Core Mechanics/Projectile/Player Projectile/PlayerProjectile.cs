@@ -17,6 +17,8 @@ public class PlayerProjectile : MonoBehaviour
 
     void Update()
     {
+        damage = SaveManager.instance.attackDamage; // Ambil nilai damage dari SaveManager
+
         if (direction != Vector3.zero)
         {
             transform.position += direction * speed * Time.deltaTime;

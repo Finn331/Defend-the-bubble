@@ -4,27 +4,117 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [Header("Projectile Settings")]
     [SerializeField] private GameObject projectilePrefab; // Prefab untuk object yang akan di-spawn
     [SerializeField] private Transform spawnPoint; // Titik spawn projectile
-    [SerializeField] private float spawnDelay = 0.5f; // Delay antara tap
 
-    private float lastSpawnTime;
+    [Header("Manual Shoot Settings")]
+    private float manualSpawnDelay; // Delay antara manual tap
+    private float manualEffectiveDelay; // Delay efektif manual shooting
+    private float lastManualSpawnTime; // Waktu terakhir manual shoot
+
+    [Header("Auto Shoot Settings")]
+    [SerializeField] private bool isAutoShootEnabled = false; // Toggle untuk auto shoot
+    [SerializeField] private float autoFireRate = 2f; // Fire rate untuk auto shoot (tembakan per detik)
+    private float autoEffectiveDelay; // Delay antara tembakan otomatis
+    private float lastAutoSpawnTime; // Waktu terakhir auto shoot
+
+    [Header("Script References")]
+    [SerializeField] UpgradeSystem upgradeSystem;
+
+    private void Awake()
+    {
+        UpgradeableCheck();
+        UpdateEffectiveDelays();
+    }
 
     void Update()
     {
-        // Jika tombol kiri mouse ditekan dan sudah melewati waktu delay
-        if (Input.GetMouseButtonDown(0) && Time.time > lastSpawnTime + spawnDelay)
+        // Update upgradeable settings dan delay
+        UpgradeableCheck();
+        UpdateEffectiveDelays();
+
+        // Manual shooting (klik kiri)
+        if (Input.GetMouseButtonDown(0) && Time.time > lastManualSpawnTime + manualEffectiveDelay)
         {
-            // Periksa apakah ada musuh
-            if (FindClosestEnemyWithLowestHealth() != null)
-            {
-                SpawnProjectile();
-                lastSpawnTime = Time.time;
-            }
-            else
-            {
-                Debug.Log("Tidak ada musuh, tidak bisa menembak!");
-            }
+            AttemptManualShoot();
+        }
+
+        // Auto shooting jika toggle diaktifkan
+        if (isAutoShootEnabled && Time.time > lastAutoSpawnTime + autoEffectiveDelay)
+        {
+            AttemptAutoShoot();
+        }
+
+        // Toggle auto shoot menggunakan tombol "T" (contoh toggle)
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    isAutoShootEnabled = !isAutoShootEnabled;
+        //    Debug.Log($"Auto Shoot Toggled: {isAutoShootEnabled}");
+        //}
+    }
+
+    void UpgradeableCheck()
+    {
+        // Boolean Checking from UpgradeSystem Scripts
+        if (upgradeSystem.unlockedAutomaticShoot == true)
+        {
+            isAutoShootEnabled = true;
+        }
+
+        manualSpawnDelay = SaveManager.instance.attackSpeedClick;
+
+        // Auto fire rate bisa di-upgrade jika Anda ingin menambahkannya ke sistem upgrade
+        autoFireRate = SaveManager.instance.autoFireRate; // Ambil nilai fire rate auto dari SaveManager
+    }
+
+    // Perbarui delay efektif berdasarkan spawnDelay untuk manual dan auto shooting
+    void UpdateEffectiveDelays()
+    {
+        if (manualSpawnDelay > 0)
+        {
+            manualEffectiveDelay = 1 / manualSpawnDelay; // Semakin besar spawnDelay, semakin kecil delay manual
+        }
+        else
+        {
+            manualEffectiveDelay = float.MaxValue; // Hindari pembagian dengan nol
+        }
+
+        if (autoFireRate > 0)
+        {
+            autoEffectiveDelay = 1 / autoFireRate; // Semakin besar fire rate, semakin kecil delay otomatis
+        }
+        else
+        {
+            autoEffectiveDelay = float.MaxValue; // Hindari pembagian dengan nol
+        }
+    }
+
+    void AttemptManualShoot()
+    {
+        // Periksa apakah ada musuh
+        if (FindClosestEnemyWithLowestHealth() != null)
+        {
+            SpawnProjectile();
+            lastManualSpawnTime = Time.time;
+        }
+        else
+        {
+            Debug.Log("Tidak ada musuh, tidak bisa menembak (manual)!");
+        }
+    }
+
+    void AttemptAutoShoot()
+    {
+        // Periksa apakah ada musuh
+        if (FindClosestEnemyWithLowestHealth() != null)
+        {
+            SpawnProjectile();
+            lastAutoSpawnTime = Time.time;
+        }
+        else
+        {
+            Debug.Log("Tidak ada musuh, tidak bisa menembak (auto)!");
         }
     }
 

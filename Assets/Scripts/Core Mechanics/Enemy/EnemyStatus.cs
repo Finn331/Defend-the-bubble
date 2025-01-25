@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
+    [Header("Enemy Settings")]
     public float health; // Darah musuh
     public float currentHealth; // Darah musuh saat ini
+    [SerializeField] int droppedMoney; // Uang yang dijatuhkan musuh
+
     private PlayerProjectile playerProjectile;
     void Start()
     {
@@ -45,6 +48,8 @@ public class EnemyStatus : MonoBehaviour
 
     public void Die()
     {
+        SaveManager.instance.money += droppedMoney;
+        SaveManager.instance.Save();
         Destroy(gameObject);
     }
 }
