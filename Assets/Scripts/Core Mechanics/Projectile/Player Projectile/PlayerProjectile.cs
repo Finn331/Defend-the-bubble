@@ -27,6 +27,14 @@ public class PlayerProjectile : MonoBehaviour
         StartCoroutine(Destroy());
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyProjectile"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private IEnumerator Destroy()
     {
         yield return new WaitForSeconds(timeToDestroy);
