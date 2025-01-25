@@ -12,6 +12,7 @@ public class MainmenuManager : MonoBehaviour
 
     [Header("Transition Effect")]
     [SerializeField] Image fadeIn;
+    [SerializeField] GameObject fadeInGameObject;
     [SerializeField] float fadeInDuration;
 
     [Header("UI SFX")]
@@ -32,9 +33,10 @@ public class MainmenuManager : MonoBehaviour
     public void Play()
     {
         AudioManager.instance.PlaySound(uiClick);
-        LeanTween.scale(startButton, new Vector3(1.1f, 1.1f, 1.1f), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() =>
+        LeanTween.scale(startButton, new Vector3(3.6986f, 3.6986f, 3.6986f), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() =>
         {
-            LeanTween.scale(startButton, new Vector3(1, 1, 1), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => {
+            fadeInGameObject.SetActive(true);
+            LeanTween.scale(startButton, new Vector3(3.5986f, 3.5986f, 3.5986f), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => {
                 LeanTween.alpha(fadeIn.rectTransform, 1, fadeInDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() =>
                 {
                     UnityEngine.SceneManagement.SceneManager.LoadScene("Playground");
@@ -47,9 +49,10 @@ public class MainmenuManager : MonoBehaviour
     public void Quit()
     {
         AudioManager.instance.PlaySound(uiClick);
-        LeanTween.scale(quitButton, new Vector3(1.1f, 1.1f, 1.1f), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() =>
+        LeanTween.scale(quitButton, new Vector3(3.6986f, 3.6986f, 3.6986f), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() =>
         {
-            LeanTween.scale(quitButton, new Vector3(1, 1, 1), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => {
+            fadeInGameObject.SetActive(true);
+            LeanTween.scale(quitButton, new Vector3(3.5986f, 3.5986f, 3.5986f), transitionDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() => {
                 LeanTween.alpha(fadeIn.rectTransform, 1, fadeInDuration).setEase(LeanTweenType.easeOutCubic).setOnComplete(() =>
                 {
                     Application.Quit();
