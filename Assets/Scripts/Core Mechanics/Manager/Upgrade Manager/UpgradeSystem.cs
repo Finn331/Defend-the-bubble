@@ -23,6 +23,7 @@ public class UpgradeSystem : MonoBehaviour
 
     [Header("Button Setting")]
     [SerializeField] Button automaticAttackButton;
+    [SerializeField] Button unlockAutoShootButton;
 
     [Header("Text Setting")]
     [SerializeField] TextMeshProUGUI attackUpgradeText;
@@ -30,6 +31,7 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI attackSpeedClickUpgradeText;
     [SerializeField] TextMeshProUGUI automaticAttackUpgradeText;
     [SerializeField] TextMeshProUGUI regenRateUpgradeText;
+    [SerializeField] TextMeshProUGUI automaticAttackUnlockText;
 
 
 
@@ -60,6 +62,27 @@ public class UpgradeSystem : MonoBehaviour
     void MoneyChecking()
     {
         currMoney = SaveManager.instance.money; // Ambil jumlah uang dari SaveManager
+    }
+
+    public void UnlockAutomaticShoot()
+    {
+        if (currMoney >= 100)
+        {
+            SaveManager.instance.money -= 100;
+            unlockedAutomaticShoot = true;
+            Debug.Log("Automatic shoot unlocked!");
+            unlockAutoShootButton.interactable = false;
+            SaveManager.instance.Save();
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
+    }
+
+    void UnlockAutomaticShootText()
+    {
+        automaticAttackUnlockText.text =  $"Unlock Automatic Shoot (100 Money)";
     }
 
     public void UpgradeAttack()
@@ -175,5 +198,6 @@ public class UpgradeSystem : MonoBehaviour
         UpgradeRegenRateText();
         UpgradeAttackSpeedClickText();
         UpgradeAutomaticAttactText();
+        UnlockAutomaticShootText();
     }
 }

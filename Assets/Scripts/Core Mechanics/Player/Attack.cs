@@ -54,6 +54,7 @@ public class Attack : MonoBehaviour
         //}
     }
 
+
     void UpgradeableCheck()
     {
         // Boolean Checking from UpgradeSystem Scripts
