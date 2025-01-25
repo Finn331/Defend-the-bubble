@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIPlayground : MonoBehaviour
@@ -24,6 +25,19 @@ public class UIPlayground : MonoBehaviour
     [Header("UI Sprite")]
     [SerializeField] GameObject scroll;
 
+    [Header("UI Button")]
+    [SerializeField] GameObject demolishButton;
+    [SerializeField] GameObject upgradeButton;
+    [SerializeField] GameObject buildButton;
+
+    [Header("UI Text")]
+    [SerializeField] TextMeshProUGUI attackUpgradeText;
+    [SerializeField] TextMeshProUGUI healthUpgradeText;
+    [SerializeField] TextMeshProUGUI attackSpeedClickUpgradeText;
+    [SerializeField] TextMeshProUGUI automaticAttackUpgradeText;
+    [SerializeField] TextMeshProUGUI regenRateUpgradeText;
+    [SerializeField] TextMeshProUGUI automaticAttackUnlockText;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,45 +52,100 @@ public class UIPlayground : MonoBehaviour
         ToggleUpgradeElements(false);
     }
 
+    void DUBButton()
+    {
+        demolishButton.SetActive(false);
+        upgradeButton.SetActive(false);
+        buildButton.SetActive(false);
+    }
+
+    public void BackUpgrade()
+    {
+        demolishButton.SetActive(false);
+        upgradeButton.SetActive(false);
+        buildButton.SetActive(false);
+        buildUIContainer.SetActive(false);
+        upgradeUIContainer.SetActive(false);
+        featureUIContainer.SetActive(false);
+
+        attackUpgradeText.enabled = false;
+        healthUpgradeText.enabled = false;
+        attackSpeedClickUpgradeText.enabled = false;
+        automaticAttackUpgradeText.enabled = false;
+        regenRateUpgradeText.enabled = false;
+        automaticAttackUnlockText.enabled = false;
+
+        LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+        {
+            
+            LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+            {
+                demolishButton.SetActive(true);
+                upgradeButton.SetActive(true);
+                buildButton.SetActive(true);
+            });
+        });
+    }
     void InitialOpenAnimation()
     {
         // Play initial open animation for UI elements
-        LeanTween.scale(scroll, Vector3.one, 0.5f).setEase(LeanTweenType.easeOutBack);
+        LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack);
     }
 
     public void Build()
-    {
-        // Open Build UI and close others
-        isBuildUIOpen = true;
-        isUpgradeUIOpen = false;
-        isFeatureUIOpen = false;
+    {                   
+        LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+        {
+            LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+            {
+                // Open Build UI and close others
+                isBuildUIOpen = true;
+                isUpgradeUIOpen = false;
+                isFeatureUIOpen = false;
+                DUBButton();
 
-        ToggleUpgradeElements(false);
-        UpdateUIState();
+                ToggleUpgradeElements(false);
+                UpdateUIState();
+            });
+        });        
     }
 
     public void Upgrade()
-    {
-        // Open Upgrade UI and close others
-        isUpgradeUIOpen = true;
-        isBuildUIOpen = false;
-        isFeatureUIOpen = false;
+    {        
+        LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+        {
+            LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+            {
+                // Open Upgrade UI and close others
+                isUpgradeUIOpen = true;
+                isBuildUIOpen = false;
+                isFeatureUIOpen = false;
+                DUBButton();
 
-        // Activate all upgrade elements (buttons/texts)
-        ToggleUpgradeElements(true);
+                // Activate all upgrade elements (buttons/texts)
+                ToggleUpgradeElements(true);
 
-        UpdateUIState();
+                UpdateUIState();
+            });
+        });
     }
 
     public void Feature()
     {
-        // Open Feature UI and close others
-        isFeatureUIOpen = true;
-        isBuildUIOpen = false;
-        isUpgradeUIOpen = false;
+        LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+        {
+            LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
+            {
+                // Open Feature UI and close others
+                isFeatureUIOpen = true;
+                isBuildUIOpen = false;
+                isUpgradeUIOpen = false;
+                DUBButton();
 
-        ToggleUpgradeElements(false);
-        UpdateUIState();
+                ToggleUpgradeElements(false);
+                UpdateUIState();
+            });
+        });
     }
 
     private void UpdateUIState()

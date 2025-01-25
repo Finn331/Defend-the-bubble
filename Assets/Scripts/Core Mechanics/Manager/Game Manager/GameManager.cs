@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
             }
 
             // Tunggu 30 detik untuk istirahat sebelum memulai fase berikutnya
-            yield return new WaitForSeconds(30f);
+            yield return new WaitForSeconds(10f);
 
             // Selesai wave
             currentWave++;
