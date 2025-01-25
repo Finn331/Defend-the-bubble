@@ -134,14 +134,20 @@ public class Attack : MonoBehaviour
                 // Arahkan projectile ke musuh tersebut
                 Vector3 direction = (target.transform.position - spawnPoint.position).normalized;
 
-                // Rotasi projectile agar ujung atas sprite mengarah ke musuh
+                // Rotasi projectile agar ujung kanan sprite mengarah ke musuh
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                projectile.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+                projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
 
+                // Geser projectile ke tengah-tengah ujung kanan
+                Vector3 offset = projectile.transform.right * (projectile.GetComponent<SpriteRenderer>().bounds.size.x / 2);
+                projectile.transform.position += offset;
+
+                // Berikan arah ke projectile
                 projectile.GetComponent<PlayerProjectile>().SetDirection(direction);
             }
         }
     }
+
 
     GameObject FindClosestEnemyWithLowestHealth()
     {

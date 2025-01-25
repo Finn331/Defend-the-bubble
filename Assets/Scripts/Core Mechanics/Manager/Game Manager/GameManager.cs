@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public int currentPhase = 1;
     private int currentWave = 1;
 
+    [Header("AudioClip Setting")]
+    [SerializeField] private AudioClip uiClick;
+
     private int enemiesPerWave;
     private int miniBossSpawnInterval = 1; // Mini boss muncul setiap wave Note: Mid Game
     private int bossSpawnInterval = 2; // Boss muncul setiap 2 wave (default) Note: Late Game
@@ -46,7 +49,13 @@ public class GameManager : MonoBehaviour
         UpdateMoneyText();
     }
 
-    void StartLevel1Check()
+    public void Quit()
+    {
+        AudioManager.instance.PlaySound(uiClick);
+        Application.Quit();
+    }
+
+        void StartLevel1Check()
     {
         if (currentPhase == 1 && currentWave == 1)
         {

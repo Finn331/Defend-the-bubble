@@ -175,6 +175,7 @@ MonoBehaviour:
   health: 500
   currentHealth: 0
   droppedMoney: 84
+  dieSFX: {fileID: 8300000, guid: efd032b91440bdd4f8ef61ffd0bc67e6, type: 3}
 --- !u!114 &7669648750359494388
 MonoBehaviour:
   m_ObjectHideFlags: 0

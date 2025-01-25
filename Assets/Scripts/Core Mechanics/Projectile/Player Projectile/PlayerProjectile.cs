@@ -7,6 +7,7 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private float speed; // Kecepatan projectile
     [SerializeField] private float timeToDestroy; // Waktu sebelum projectile dihancurkan
     public float damage; // Damage yang diberikan projectile
+    [SerializeField] AudioClip hitSound;
 
     private Vector3 direction;
     public Animator anim;
@@ -32,13 +33,13 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.CompareTag("EnemyProjectile"))
         {
             anim.SetTrigger("hit");
-            
+            AudioManager.instance.PlaySound(hitSound);
         }
 
         if (collision.CompareTag("Enemy"))
         {
-            
             anim.SetTrigger("hit");
+            AudioManager.instance.PlaySound(hitSound);
         }
     }
 

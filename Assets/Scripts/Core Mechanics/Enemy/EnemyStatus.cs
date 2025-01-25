@@ -6,7 +6,7 @@ public class EnemyStatus : MonoBehaviour
     public float health; // Darah musuh
     public float currentHealth; // Darah musuh saat ini
     [SerializeField] int droppedMoney; // Uang yang dijatuhkan musuh
-
+    [SerializeField] AudioClip dieSFX; // SFX ketika musuh mati
     private PlayerProjectile playerProjectile;
     void Start()
     {
@@ -48,6 +48,7 @@ public class EnemyStatus : MonoBehaviour
 
     public void Die()
     {
+        AudioManager.instance.PlaySound(dieSFX);
         SaveManager.instance.money += droppedMoney;
         SaveManager.instance.Save();
         Destroy(gameObject);

@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPlayground : MonoBehaviour
 {
@@ -54,6 +56,8 @@ public class UIPlayground : MonoBehaviour
         // Ensure all upgrade elements are initially disabled
         ToggleUpgradeElements(false);
     }
+
+    
 
     void DUBButton()
     {
@@ -161,6 +165,21 @@ public class UIPlayground : MonoBehaviour
             });
         });
     }
+
+    public void Retry()
+    {
+        AudioManager.instance.PlaySound(uiClick);
+        SaveManager.instance.health = 100;
+        SaveManager.instance.money = 0;
+        SaveManager.instance.attackSpeedClick = 2;
+        SaveManager.instance.attackDamage = 5;
+        SaveManager.instance.regenRate = 0.1f;
+        SaveManager.instance.autoFireRate = 0.5f;
+        SaveManager.instance.Save();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Mainmenu");
+    }
+
+    
 
     private void UpdateUIState()
     {

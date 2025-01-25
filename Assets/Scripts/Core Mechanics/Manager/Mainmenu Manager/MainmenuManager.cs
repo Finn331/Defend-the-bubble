@@ -43,7 +43,15 @@ public class MainmenuManager : MonoBehaviour
                 });
             });
         });
-        
+
+        SaveManager.instance.health = 100;
+        SaveManager.instance.money = 0;
+        SaveManager.instance.attackSpeedClick = 2;
+        SaveManager.instance.attackDamage = 5;
+        SaveManager.instance.regenRate = 0.1f;
+        SaveManager.instance.autoFireRate = 0.5f;
+        SaveManager.instance.Save();
+
     }
 
     public void Quit()

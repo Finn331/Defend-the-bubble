@@ -175,6 +175,7 @@ MonoBehaviour:
   health: 100
   currentHealth: 0
   droppedMoney: 2
+  dieSFX: {fileID: 8300000, guid: efd032b91440bdd4f8ef61ffd0bc67e6, type: 3}
 --- !u!114 &853607921294372635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +193,3 @@ MonoBehaviour:
   moveSpeed: 0.5
   attackDamage: 10
   attackCooldown: 1
-  raycastRadius: 0.5
-  raycastAngle: 360
-  raycastColor: {r: 0, g: 0, b: 1, a: 1}

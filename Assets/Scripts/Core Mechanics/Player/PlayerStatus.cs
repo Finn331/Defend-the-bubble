@@ -10,6 +10,9 @@ public class PlayerStatus : MonoBehaviour
 
     private Attack attack; // Referensi ke komponen Attack
 
+    [Header("Gameover Setting")]
+    [SerializeField] GameObject gameoverPanel;
+
     private void Awake()
     {
         // Ambil komponen Attack dari GameObject ini
@@ -33,7 +36,7 @@ public class PlayerStatus : MonoBehaviour
     private void Update()
     {
         health = SaveManager.instance.health; // Ambil nilai health dari SaveManager
-
+        Gameover();
 
         // Mengecek apakah regenerasi health dapat dimulai
         if (Time.time - lastRegenerationTime >= regenerationDelay)
@@ -73,6 +76,16 @@ public class PlayerStatus : MonoBehaviour
             }
 
             Debug.Log("Regenerasi Health: " + currentHealth);
+        }
+    }
+
+    void Gameover()
+    {
+        // Tambahkan logika jika Player mati
+        if (currentHealth <= 1)
+        {
+            Debug.Log("Player mati!");
+            gameoverPanel.SetActive(true);
         }
     }
 }
