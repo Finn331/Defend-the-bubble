@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &508153746024803492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8771135435168724856}
+  - component: {fileID: 2300062133052218247}
+  - component: {fileID: 5964000085708285485}
+  - component: {fileID: 8185027583854876974}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8771135435168724856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508153746024803492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.23958, y: 498.1901, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2300062133052218247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508153746024803492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b6e0552a447eb24b9ff6057b0a03f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 0}
+  phaseText: {fileID: 0}
+  waveText: {fileID: 0}
+  enemyPrefabs:
+  - {fileID: 7861376371883429525, guid: 9d00495aa3280f04b83e96a1ea603c47, type: 3}
+  - {fileID: 1558117798630505886, guid: 5e40e98e40473da40b27b9b1ff7830eb, type: 3}
+  miniBossPrefabs:
+  - {fileID: 1788058700697648538, guid: 3bb0fd8b6496dc44fa441f73f3102982, type: 3}
+  - {fileID: 1360465738287886353, guid: df8a6a5adafb6864088e507788bd7074, type: 3}
+  bossPrefabs:
+  - {fileID: 7320400412136279505, guid: 2e3876372087e5e47973336ddf961f74, type: 3}
+  - {fileID: 689877031158162776, guid: 2d20dd5bcb518a14286c58368a311c20, type: 3}
+  spawnDelayPhase1to3: 7
+  spawnDelayPhase4to6: 4.5
+  spawnDelayPhase6Plus: 3
+  currentPhase: 1
+--- !u!114 &5964000085708285485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508153746024803492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fcb2dffcd7b534da5fee0fec1de3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currMoney: 0
+  attackUpgradeCost: 10
+  healthUpgradeCost: 10
+  attackSpeedClickUpgradeCost: 10
+  automaticAttackUpgradeCost: 10
+  regenRateUpgradeCost: 10
+  upgradeCostMultiplier: 1.1
+  statIncreaseMultiplier: 1.1
+  unlockedAutomaticShoot: 0
+  automaticAttackButton: {fileID: 0}
+  unlockAutoShootButton: {fileID: 0}
+  attackUpgradeText: {fileID: 0}
+  healthUpgradeText: {fileID: 0}
+  attackSpeedClickUpgradeText: {fileID: 0}
+  automaticAttackUpgradeText: {fileID: 0}
+  regenRateUpgradeText: {fileID: 0}
+  automaticAttackUnlockText: {fileID: 0}
+  upgradedFx: {fileID: 8300000, guid: d5f6eb1562bacf448844b4f223158f5c, type: 3}
+--- !u!114 &8185027583854876974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508153746024803492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1971ca6ff3d94564796d21fc79d0ad99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildUIContainer: {fileID: 0}
+  upgradeUIContainer: {fileID: 0}
+  upgradePanelTexts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  featureUIContainer: {fileID: 0}
+  featureUIPanelText: {fileID: 0}
+  scroll: {fileID: 0}
+  demolishButton: {fileID: 0}
+  upgradeButton: {fileID: 0}
+  buildButton: {fileID: 0}
+  attackUpgradeText: {fileID: 0}
+  healthUpgradeText: {fileID: 0}
+  attackSpeedClickUpgradeText: {fileID: 0}
+  automaticAttackUpgradeText: {fileID: 0}
+  regenRateUpgradeText: {fileID: 0}
+  automaticAttackUnlockText: {fileID: 0}
+  uiClick: {fileID: 8300000, guid: d8907308d6bfee04d9a8c46d869c0d43, type: 3}

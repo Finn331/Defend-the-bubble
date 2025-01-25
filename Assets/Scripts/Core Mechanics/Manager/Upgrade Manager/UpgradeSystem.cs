@@ -32,7 +32,9 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI automaticAttackUpgradeText;
     [SerializeField] TextMeshProUGUI regenRateUpgradeText;
     [SerializeField] TextMeshProUGUI automaticAttackUnlockText;
-    
+
+    [Header("Audio Clip")]
+    [SerializeField] AudioClip upgradedFx;
 
     void Start()
     {
@@ -67,6 +69,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (currMoney >= 100)
         {
+            AudioManager.instance.PlaySound(upgradedFx);
             SaveManager.instance.money -= 100;
             unlockedAutomaticShoot = true;
             Debug.Log("Automatic shoot unlocked!");
@@ -88,6 +91,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (currMoney >= attackUpgradeCost)
         {
+            AudioManager.instance.PlaySound(upgradedFx);
             SaveManager.instance.money -= attackUpgradeCost;
             SaveManager.instance.attackDamage = Mathf.RoundToInt(SaveManager.instance.attackDamage * statIncreaseMultiplier);
             attackUpgradeCost = Mathf.RoundToInt(attackUpgradeCost * upgradeCostMultiplier);
@@ -109,6 +113,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (currMoney >= healthUpgradeCost)
         {
+            AudioManager.instance.PlaySound(upgradedFx);
             SaveManager.instance.money -= healthUpgradeCost;
             SaveManager.instance.health = Mathf.RoundToInt(SaveManager.instance.health * statIncreaseMultiplier);
             healthUpgradeCost = Mathf.RoundToInt(healthUpgradeCost * upgradeCostMultiplier);
@@ -130,6 +135,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (currMoney >= attackSpeedClickUpgradeCost)
         {
+            AudioManager.instance.PlaySound(upgradedFx);
             SaveManager.instance.money -= attackSpeedClickUpgradeCost;
             SaveManager.instance.attackSpeedClick *= statIncreaseMultiplier;
             attackSpeedClickUpgradeCost = Mathf.RoundToInt(attackSpeedClickUpgradeCost * upgradeCostMultiplier);
@@ -151,6 +157,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (currMoney >= automaticAttackUpgradeCost)
         {
+            AudioManager.instance.PlaySound(upgradedFx);
             SaveManager.instance.money -= automaticAttackUpgradeCost;
             SaveManager.instance.autoFireRate = Mathf.RoundToInt(SaveManager.instance.autoFireRate * statIncreaseMultiplier);
             automaticAttackUpgradeCost = Mathf.RoundToInt(automaticAttackUpgradeCost * upgradeCostMultiplier);
@@ -172,6 +179,7 @@ public class UpgradeSystem : MonoBehaviour
     {
         if (currMoney >= regenRateUpgradeCost)
         {
+            AudioManager.instance.PlaySound(upgradedFx);
             SaveManager.instance.money -= regenRateUpgradeCost;
             SaveManager.instance.regenRate *= statIncreaseMultiplier;
             regenRateUpgradeCost = Mathf.RoundToInt(regenRateUpgradeCost * upgradeCostMultiplier);

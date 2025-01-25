@@ -31,13 +31,16 @@ public class UIPlayground : MonoBehaviour
     [SerializeField] GameObject buildButton;
 
     [Header("UI Text")]
-    [SerializeField] TextMeshProUGUI attackUpgradeText;
-    [SerializeField] TextMeshProUGUI healthUpgradeText;
-    [SerializeField] TextMeshProUGUI attackSpeedClickUpgradeText;
-    [SerializeField] TextMeshProUGUI automaticAttackUpgradeText;
-    [SerializeField] TextMeshProUGUI regenRateUpgradeText;
-    [SerializeField] TextMeshProUGUI automaticAttackUnlockText;
-    
+    [SerializeField] GameObject attackUpgradeText;
+    [SerializeField] GameObject healthUpgradeText;
+    [SerializeField] GameObject attackSpeedClickUpgradeText;
+    [SerializeField] GameObject automaticAttackUpgradeText;
+    [SerializeField] GameObject regenRateUpgradeText;
+    [SerializeField] GameObject automaticAttackUnlockText;
+
+    [Header("UI Sound Clip")]
+    [SerializeField] AudioClip uiClick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +64,7 @@ public class UIPlayground : MonoBehaviour
 
     public void BackUpgrade()
     {
+        AudioManager.instance.PlaySound(uiClick);
         demolishButton.SetActive(false);
         upgradeButton.SetActive(false);
         buildButton.SetActive(false);
@@ -68,12 +72,12 @@ public class UIPlayground : MonoBehaviour
         upgradeUIContainer.SetActive(false);
         featureUIContainer.SetActive(false);
 
-        attackUpgradeText.enabled = false;
-        healthUpgradeText.enabled = false;
-        attackSpeedClickUpgradeText.enabled = false;
-        automaticAttackUpgradeText.enabled = false;
-        regenRateUpgradeText.enabled = false;
-        automaticAttackUnlockText.enabled = false;
+        attackUpgradeText.SetActive(false);
+        healthUpgradeText.SetActive(false);
+        attackSpeedClickUpgradeText.SetActive(false);
+        automaticAttackUpgradeText.SetActive(false);
+        regenRateUpgradeText.SetActive(false);
+        automaticAttackUnlockText.SetActive(false);
 
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
@@ -93,7 +97,8 @@ public class UIPlayground : MonoBehaviour
     }
 
     public void Build()
-    {                   
+    {
+        AudioManager.instance.PlaySound(uiClick);
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
             LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
@@ -111,7 +116,8 @@ public class UIPlayground : MonoBehaviour
     }
 
     public void Upgrade()
-    {        
+    {
+        AudioManager.instance.PlaySound(uiClick);
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
             LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
@@ -121,6 +127,12 @@ public class UIPlayground : MonoBehaviour
                 isBuildUIOpen = false;
                 isFeatureUIOpen = false;
                 DUBButton();
+
+                attackUpgradeText.SetActive(true);
+                healthUpgradeText.SetActive(true);
+                attackSpeedClickUpgradeText.SetActive(true);
+                automaticAttackUpgradeText.SetActive(true);
+                regenRateUpgradeText.SetActive(true);
 
                 // Activate all upgrade elements (buttons/texts)
                 ToggleUpgradeElements(true);
@@ -132,6 +144,7 @@ public class UIPlayground : MonoBehaviour
 
     public void Feature()
     {
+        AudioManager.instance.PlaySound(uiClick);
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
             LeanTween.scale(scroll, new Vector3(1.12370002f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
@@ -141,6 +154,7 @@ public class UIPlayground : MonoBehaviour
                 isBuildUIOpen = false;
                 isUpgradeUIOpen = false;
                 DUBButton();
+                automaticAttackUnlockText.SetActive(true);
 
                 ToggleUpgradeElements(false);
                 UpdateUIState();

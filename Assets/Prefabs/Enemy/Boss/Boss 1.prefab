@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb650962547971439d651914606d902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 835
   currentHealth: 0
-  droppedMoney: 2
+  droppedMoney: 135
 --- !u!114 &3557870943226423106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,4 +191,4 @@ MonoBehaviour:
   attackRange: 1
   moveSpeed: 2
   attackDamage: 10
-  attackCooldown: 1
+  attackCooldown: 2.3
