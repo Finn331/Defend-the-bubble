@@ -85,6 +85,7 @@ public class PlayerStatus : MonoBehaviour
         // Tambahkan logika jika Player mati
         if (currentHealth <= 1)
         {
+            attack.enabled = false;
             Debug.Log("Player mati!");
             gameoverPanel.SetActive(true);
             SaveManager.instance.isGameover = true;
