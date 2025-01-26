@@ -62,6 +62,8 @@ MonoBehaviour:
   spawnDelayPhase4to6: 4.5
   spawnDelayPhase6Plus: 3
   currentPhase: 1
+  uiClick: {fileID: 8300000, guid: d8907308d6bfee04d9a8c46d869c0d43, type: 3}
+  gameoverSFX: {fileID: 8300000, guid: 19f7c319a9a45b64ba6ac73404cd49c9, type: 3}
 --- !u!114 &5964000085708285485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +93,12 @@ MonoBehaviour:
   automaticAttackUpgradeText: {fileID: 0}
   regenRateUpgradeText: {fileID: 0}
   automaticAttackUnlockText: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
+  player5: {fileID: 0}
+  player6: {fileID: 0}
   upgradedFx: {fileID: 8300000, guid: d5f6eb1562bacf448844b4f223158f5c, type: 3}
 --- !u!114 &8185027583854876974
 MonoBehaviour:

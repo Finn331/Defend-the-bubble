@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     [Header("AudioClip Setting")]
     [SerializeField] private AudioClip uiClick;
+    [SerializeField] private AudioClip gameoverSFX;
 
     private int enemiesPerWave;
     private int miniBossSpawnInterval = 1; // Mini boss muncul setiap wave Note: Mid Game
@@ -47,6 +48,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateMoneyText();
+        //GameoverCheck();
+    }
+
+    void GameoverCheck()
+    {
+        if (SaveManager.instance.isGameover == true)
+        {
+            AudioManager.instance.PlaySound(gameoverSFX);
+        }
     }
 
     public void Quit()
@@ -55,7 +65,7 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-        void StartLevel1Check()
+    void StartLevel1Check()
     {
         if (currentPhase == 1 && currentWave == 1)
         {

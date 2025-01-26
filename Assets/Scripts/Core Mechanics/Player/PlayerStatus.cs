@@ -12,7 +12,8 @@ public class PlayerStatus : MonoBehaviour
 
     [Header("Gameover Setting")]
     [SerializeField] GameObject gameoverPanel;
-
+    [SerializeField] AudioClip hitSFX;
+    //[SerializeField] AudioClip gameoverSFX;
     private void Awake()
     {
         // Ambil komponen Attack dari GameObject ini
@@ -50,7 +51,7 @@ public class PlayerStatus : MonoBehaviour
     {
         currentHealth -= damage;
         Debug.Log("Player menerima damage: " + damage);
-
+        AudioManager.instance.PlaySound(hitSFX);
         if (currentHealth <= 0)
         {
             Debug.Log("Player mati!");
@@ -86,6 +87,8 @@ public class PlayerStatus : MonoBehaviour
         {
             Debug.Log("Player mati!");
             gameoverPanel.SetActive(true);
+            SaveManager.instance.isGameover = true;
+            //AudioManager.instance.PlaySound(gameoverSFX);
         }
     }
 }

@@ -25,6 +25,7 @@ public class SaveManager : MonoBehaviour
 
     [Header("Initial Screen Setup")]
     public bool isFirstTime = true;
+    public bool isGameover = false;
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class SaveManager : MonoBehaviour
             midGame = data.midGame;
             lateGame = data.lateGame;
             isFirstTime = data.isFirstTime;
+            isGameover = data.isGameover;
 
             file.Close();
         }
@@ -82,6 +84,7 @@ public class SaveManager : MonoBehaviour
         data.isFirstTime = isFirstTime;
         data.midGame = midGame;
         data.lateGame = lateGame;
+        data.isGameover = isGameover;
 
         bf.Serialize(file, data);
         file.Close();
@@ -104,4 +107,5 @@ class PlayerData_Storage
     public bool midGame;
     public bool lateGame;
     public bool isFirstTime;
+    public bool isGameover;
 }

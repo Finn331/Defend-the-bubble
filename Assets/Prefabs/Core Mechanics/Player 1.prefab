@@ -250,3 +250,6 @@ MonoBehaviour:
   currentHealth: 0
   regenerationRate: 0.1
   regenerationDelay: 0
+  gameoverPanel: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: ffa9ef0c705a7d4428f50aee5562b1d2, type: 3}
+  gameoverSFX: {fileID: 8300000, guid: fdfc4a128e804ed4cb67fdce0ef62a2c, type: 3}

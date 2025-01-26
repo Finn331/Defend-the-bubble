@@ -175,6 +175,7 @@ public class UIPlayground : MonoBehaviour
         SaveManager.instance.attackDamage = 5;
         SaveManager.instance.regenRate = 0.1f;
         SaveManager.instance.autoFireRate = 0.5f;
+        SaveManager.instance.isGameover = false;
         SaveManager.instance.Save();
         UnityEngine.SceneManagement.SceneManager.LoadScene("Mainmenu");
     }

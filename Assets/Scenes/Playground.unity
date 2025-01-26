@@ -408,10 +408,6 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 2300062133052218247, guid: 558457801f39a7949b9ab57c4bd445de, type: 3}
-      propertyPath: uiClick
-      value: 
-      objectReference: {fileID: 8300000, guid: d8907308d6bfee04d9a8c46d869c0d43, type: 3}
-    - target: {fileID: 2300062133052218247, guid: 558457801f39a7949b9ab57c4bd445de, type: 3}
       propertyPath: waveText
       value: 
       objectReference: {fileID: 342257759}
@@ -535,10 +531,6 @@ PrefabInstance:
       propertyPath: attackSpeedClickUpgradeText
       value: 
       objectReference: {fileID: 288025649}
-    - target: {fileID: 8185027583854876974, guid: 558457801f39a7949b9ab57c4bd445de, type: 3}
-      propertyPath: upgradePanelTexts.Array.size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8185027583854876974, guid: 558457801f39a7949b9ab57c4bd445de, type: 3}
       propertyPath: upgradePanelTexts.Array.data[0]
       value: 
