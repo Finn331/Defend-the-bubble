@@ -33,6 +33,14 @@ public class UpgradeSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI regenRateUpgradeText;
     [SerializeField] TextMeshProUGUI automaticAttackUnlockText;
 
+    [Header("Player Upgrade")]
+    [SerializeField] GameObject player1;
+    [SerializeField] GameObject player2;
+    [SerializeField] GameObject player3;
+    [SerializeField] GameObject player4;
+    [SerializeField] GameObject player5;
+    [SerializeField] GameObject player6;
+
     [Header("Audio Clip")]
     [SerializeField] AudioClip upgradedFx;
 
@@ -46,6 +54,40 @@ public class UpgradeSystem : MonoBehaviour
         MoneyChecking();
         FeatureUnlock();
         AllTextCheckingUpgrade();
+        ChangePlayer();
+    }
+
+    void ChangePlayer()
+    {
+        if (SaveManager.instance.attackDamage >= 20)
+        {
+            player1.SetActive(false);
+            player2.SetActive(true);
+        }
+
+        if (SaveManager.instance.attackDamage >= 30)
+        {
+            player2.SetActive(false);
+            player3.SetActive(true);
+        }
+
+        if (SaveManager.instance.attackDamage >= 35 && SaveManager.instance.health >= 235)
+        {
+            player3.SetActive(false);
+            player4.SetActive(true);
+        }
+
+        if (SaveManager.instance.attackDamage >= 50 && SaveManager.instance.health >= 240)
+        {
+            player4.SetActive(false);
+            player5.SetActive(true);
+        }
+
+        if (SaveManager.instance.attackDamage >= 100 && SaveManager.instance.health >= 300)
+        {
+            player5.SetActive(false);
+            player6.SetActive(true);
+        }
     }
 
     void FeatureUnlock()
