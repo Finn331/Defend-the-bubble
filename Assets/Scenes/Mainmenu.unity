@@ -454,6 +454,10 @@ MonoBehaviour:
   fadeInGameObject: {fileID: 943088772}
   fadeInDuration: 1.3
   uiClick: {fileID: 8300000, guid: d8907308d6bfee04d9a8c46d869c0d43, type: 3}
+  imageHeader: {fileID: 955456459}
+  scaleDuration: 1
+  startScale: {x: 0.23985, y: 0.23985, z: 0.23985}
+  targetScale: {x: 0.25985, y: 0.25985, z: 0.25985}
 --- !u!4 &712220532
 Transform:
   m_ObjectHideFlags: 0

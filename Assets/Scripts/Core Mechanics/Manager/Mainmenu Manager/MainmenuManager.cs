@@ -18,16 +18,36 @@ public class MainmenuManager : MonoBehaviour
     [Header("UI SFX")]
     [SerializeField] AudioClip uiClick;
 
+    [Header("Animation Header Settings")]
+    [SerializeField] GameObject imageHeader;
+    [SerializeField] private float scaleDuration = 1f; // Durasi animasi
+    [SerializeField] private Vector3 startScale = new Vector3(1f, 1f, 1f); // Skala awal
+    [SerializeField] private Vector3 targetScale = new Vector3(1.2f, 1.2f, 1.2f); // Skala target (lebih besar)
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayScaleAnimation();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void PlayScaleAnimation()
+    {
+        // Animasi scale membesar
+        LeanTween.scale(imageHeader, targetScale, scaleDuration)
+            .setEase(LeanTweenType.easeInOutSine)
+            .setOnComplete(() =>
+            {
+                // Animasi scale mengecil setelah selesai membesar
+                LeanTween.scale(imageHeader, startScale, scaleDuration)
+                    .setEase(LeanTweenType.easeInOutSine)
+                    .setOnComplete(PlayScaleAnimation); // Loop animasi
+            });
     }
 
     public void Play()
