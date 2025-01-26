@@ -43,6 +43,8 @@ public class UIPlayground : MonoBehaviour
     [Header("UI Sound Clip")]
     [SerializeField] AudioClip uiClick;
 
+    [SerializeField] GameObject upgradeBoxContainer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +54,7 @@ public class UIPlayground : MonoBehaviour
         buildUIContainer.SetActive(false);
         upgradeUIContainer.SetActive(false);
         featureUIContainer.SetActive(false);
-
+        upgradeBoxContainer.SetActive(false);
         // Ensure all upgrade elements are initially disabled
         ToggleUpgradeElements(false);
     }
@@ -64,6 +66,7 @@ public class UIPlayground : MonoBehaviour
         demolishButton.SetActive(false);
         upgradeButton.SetActive(false);
         buildButton.SetActive(false);
+
     }
 
     public void BackUpgrade()
@@ -75,7 +78,7 @@ public class UIPlayground : MonoBehaviour
         buildUIContainer.SetActive(false);
         upgradeUIContainer.SetActive(false);
         featureUIContainer.SetActive(false);
-
+        upgradeBoxContainer.SetActive(false);
         attackUpgradeText.SetActive(false);
         healthUpgradeText.SetActive(false);
         attackSpeedClickUpgradeText.SetActive(false);
@@ -102,6 +105,7 @@ public class UIPlayground : MonoBehaviour
 
     public void Build()
     {
+        upgradeBoxContainer.SetActive(true);
         AudioManager.instance.PlaySound(uiClick);
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
@@ -121,6 +125,7 @@ public class UIPlayground : MonoBehaviour
 
     public void Upgrade()
     {
+        upgradeBoxContainer.SetActive(true);
         AudioManager.instance.PlaySound(uiClick);
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
@@ -148,6 +153,7 @@ public class UIPlayground : MonoBehaviour
 
     public void Feature()
     {
+        upgradeBoxContainer.SetActive(true);
         AudioManager.instance.PlaySound(uiClick);
         LeanTween.scale(scroll, new Vector3(0.0951583385f, 1.12370002f, 1.12370002f), 0.5f).setEase(LeanTweenType.easeOutBack).setOnComplete(() =>
         {
